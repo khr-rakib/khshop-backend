@@ -6,6 +6,7 @@ import connectDB from './config/db.js';
 // routes import
 import productRoute from './routes/productRoute.js';
 import userRoute from './routes/userRoutes.js';
+import orderRoute from './routes/orderRoutes.js';
 import { errorHandler, notFound } from './middlewares/errorMiddlware.js';
 
 // env
@@ -23,6 +24,7 @@ app.use(express.json());
 // router
 app.use('/api/products', productRoute);
 app.use('/api/users', userRoute);
+app.use('/api/orders', orderRoute);
 
 // error middleware
 app.use(notFound);
