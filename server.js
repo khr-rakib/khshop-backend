@@ -1,12 +1,11 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import colors from 'colors';
-import fs from 'fs';
-import products from './data/products.js';
 import connectDB from './config/db.js';
 
 // routes import
 import productRoute from './routes/productRoute.js';
+import userRoute from './routes/userRoutes.js';
 import { errorHandler, notFound } from './middlewares/errorMiddlware.js';
 
 // env
@@ -18,8 +17,12 @@ const app = express();
 // db
 connectDB();
 
+// middlewares
+app.use(express.json());
+
 // router
 app.use('/api/products', productRoute);
+app.use('/api/users', userRoute);
 
 // error middleware
 app.use(notFound);
